@@ -1,0 +1,59 @@
+.containerTasks {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    height: auto;
+}
+
+.containerTasks li {
+    list-style: none;
+    background: #262626;
+    min-width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+.containerTasks li p {
+    max-width: 90%;
+    word-wrap: break-word;
+    color: #ffffffb4;
+}
+
+.containerTasks li button {
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-radius: 50px;
+    background: #262626;
+    border: none;
+    cursor: pointer;
+}
+
+.concluded {
+    color: rgba(52, 218, 52, 0.596);
+}
+
+.not-concluded {
+    color: #DEC74E;
+    text-decoration: none;
+}
+
+.trash {
+    color: #fff;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.trash:hover {
+    color: rgb(207, 46, 46);
+    background: #ff6c6c3a;
+}
