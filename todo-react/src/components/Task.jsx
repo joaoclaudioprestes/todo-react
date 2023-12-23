@@ -30,7 +30,13 @@ const Task = ({
       <p style={{ textDecoration: concluded ? "line-through" : "none" }}>
         {item}
       </p>
-      <button onClick={() => handleRemoveTask(index)} className="trash">
+      <button
+        onClick={() => {
+          handleRemoveTask(index);
+          setConcluded(!concluded);
+        }}
+        className="trash"
+      >
         <GoTrash />
       </button>
     </li>
