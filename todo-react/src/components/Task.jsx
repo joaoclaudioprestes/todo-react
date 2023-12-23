@@ -33,7 +33,9 @@ const Task = ({
       <button
         onClick={() => {
           handleRemoveTask(index);
-          setConcluded(!concluded);
+          if (concluded) {
+            setConcluded(!concluded);
+          }
         }}
         className="trash"
       >
