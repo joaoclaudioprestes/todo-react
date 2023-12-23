@@ -7,7 +7,8 @@ function App() {
   const [task, setTask] = useState("");
   const [listTasks, setListTasks] = useState([]);
   const [contTasks, setContTasks] = useState(0);
-  const [taskCompleted, setTaskCompleted] = useState(0)
+  const [taskCompleted, setTaskCompleted] = useState(0);
+  const [taskDeleted, setTasksDeleted] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,13 +20,14 @@ function App() {
     }
   };
 
-  const removeTask = (index) => {
+  const handleRemoveTask = (index) => {
     setListTasks(listTasks.filter((element, i) => i !== index));
+    setTasksDeleted(taskDeleted + 1);
   };
 
-  const onToggleConcluded = (result) => {
-    setTaskCompleted(taskCompleted + result)
-  }
+  const handleConcluded = (result) => {
+    setTaskCompleted(taskCompleted + result);
+  };
 
   return (
     <>
@@ -56,7 +58,14 @@ function App() {
 
           <div className="completed-tasks">
             <p>Concluídas</p>
-            <span className="completedTasks">{taskCompleted} de {contTasks}</span>
+            <span className="completedTasks">
+              {taskCompleted} de {contTasks}
+            </span>
+          </div>
+
+          <div className="deleted-tasks">
+            <p>Deletadas</p>
+            <span className="deletedTasks">{taskDeleted}</span>
           </div>
         </div>
 
@@ -66,8 +75,10 @@ function App() {
               <Task
                 key={index}
                 item={item}
-                removeTask={() => removeTask(index)}
-                onToggleConcluded={onToggleConcluded}
+                handleRemoveTask={() => handleRemoveTask(index)}
+                handleConcluded={handleConcluded}
+                contTasks={contTasks}
+                taskCompleted={taskCompleted}
               />
             ))}
           </ul>

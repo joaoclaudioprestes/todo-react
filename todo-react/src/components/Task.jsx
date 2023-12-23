@@ -2,12 +2,21 @@ import { GoTrash, GoCircle, GoCheckCircle } from "react-icons/go";
 import { useState } from "react";
 import "./Task.css";
 
-const Task = ({ index, item, removeTask, onToggleConcluded }) => {
+const Task = ({
+  index,
+  item,
+  handleRemoveTask,
+  handleConcluded,
+  contTasks,
+  taskCompleted,
+}) => {
   const [concluded, setConcluded] = useState(false);
 
   const toggleConcluded = () => {
     setConcluded(!concluded);
-    onToggleConcluded(1)
+    if (!concluded && taskCompleted < contTasks) {
+      handleConcluded(1);
+    }
   };
 
   return (
@@ -18,8 +27,10 @@ const Task = ({ index, item, removeTask, onToggleConcluded }) => {
       >
         {concluded ? <GoCheckCircle /> : <GoCircle />}
       </button>
-      <p style={{ textDecoration: concluded ? "line-through" : "none" }}>{item}</p>
-      <button onClick={() => removeTask(index)} className="trash">
+      <p style={{ textDecoration: concluded ? "line-through" : "none" }}>
+        {item}
+      </p>
+      <button onClick={() => handleRemoveTask(index)} className="trash">
         <GoTrash />
       </button>
     </li>
