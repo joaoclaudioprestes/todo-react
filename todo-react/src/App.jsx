@@ -32,7 +32,7 @@ function App() {
   return (
     <>
       <header>
-        <h1 className="to">to</h1>
+        <h1 className="to">To</h1>
         <h1 className="do">do</h1>
       </header>
       <main>
